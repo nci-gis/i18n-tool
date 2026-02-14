@@ -1,0 +1,119 @@
+# For build options:
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# For project metadata and other tool configuration:
+[project]
+name = "i18n-tools"
+version = "0.0.1"
+description = "A Python toolkit for converting i18n translation files between JSON and Excel formats."
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "Proprietary - NECVN" }
+authors = [{ name = "NECVN", email = "vienpq@nec.vn" }]
+keywords = [
+    "i18n",
+    "internationalization",
+    "localization",
+    "translation",
+    "json",
+    "excel",
+    "xlsx",
+    "toolkit",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+]
+
+# run-time dependencies:
+dependencies = [
+    "colorama>=0.4.6",
+    "python-dotenv>=1.0.1",
+    "PyYAML==6.0.2",
+    "XlsxWriter==3.2.0",
+    "fastexcel==0.12.0",
+    "polars==1.17.1",
+    "numpy==2.2.1",
+    "RecursiveNamespaceV2>=0.0.2",
+    "commitizen>=4.10.0",
+]
+
+# optional dependencies:
+[project.optional-dependencies]
+dev = ["ruff>=0.8.1", "build>=1.3.0", "hatch>=1.14.2"]
+test = ["pytest>=6.0", "coverage>=7.2.7"]
+
+[project.scripts]
+i18n_tools = "i18n.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/i18n"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = false
+show_missing = true
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+    # Don't complain about missing debug-only code:s
+    "def __repr__",
+    "if self.debug",
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "AbstractMethodError",
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    # "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+
+# Read & bump version from [project].version (PEP 621)
+version_provider = "pep621"
+
+# Tag format
+tag_format = "$version"
+
+# Changelog
+update_changelog_on_bump = true
+changelog_file = "CHANGELOG.md"
+
+# Optional: customize commit types/groups in changelog
+# See: https://commitizen-tools.github.io/commitizen

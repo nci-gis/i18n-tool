@@ -1,0 +1,39 @@
+app:
+  # Values: per-namespace | per-locale
+  #  per-namespace: <namespace>/<locale>.json, e.g. common/en.json, common/fr.json
+  #  per-locale: <locale>/<namespace>.json, e.g. en/common.json, fr/common.json
+  locale_style: per-locale
+
+### logging config:
+log:
+  # level: CRITICAL = 50, FATAL = CRITICAL, ERROR = 40, WARNING = 30, WARN = WARNING, INFO = 20, DEBUG = 10, NOTSET = 0
+  level: 10
+
+### json2excel tool:
+json2excel:
+  # inputs:
+  #   # the `output` excel file name.
+  #   - name: sample
+  #     # `path` can be absolute path, or relative to `data` dir.
+  #     path: json
+  #     # The regex-pattern to filter the file in the above `path` (Optional).
+  #     pattern:
+  #     # Neither the file name to be included (Optional, type: single|list),
+  #     include:
+  #     # nor the file name to be excluded (Optional, type: single|list).
+  #     exclude:
+
+### i18n tool (excel2json):
+i18n:
+  indent: 2
+  # inputs:
+  #   # the `i18n` directory name.
+  #   - name: sample
+  #     # `path` can be absolute path, or relative to `data` dir.
+  #     path: excel
+  #     # The regex-pattern to filter the file in the above `path` (Optional).
+  #     pattern:
+  #     # Neither the file name to be included (Optional, type: single|list),
+  #     include:
+  #     # nor the file name to be excluded (Optional, type: single|list).
+  #     exclude:

@@ -1,0 +1,11 @@
+app:
+  name: i18n-tools
+  # Values: per-namespace | per-locale
+  #  per-namespace: <namespace>/<locale>.json, e.g. common/en.json, common/fr.json
+  #  per-locale: <locale>/<namespace>.json, e.g. en/common.json, fr/common.json
+  locale_style: per-locale
+
+### logging config:
+log:
+  # level: CRITICAL = 50, FATAL = CRITICAL, ERROR = 40, WARNING = 30, WARN = WARNING, INFO = 20, DEBUG = 10, NOTSET = 0
+  level: 20
